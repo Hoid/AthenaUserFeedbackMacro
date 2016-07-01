@@ -1,0 +1,38 @@
+***This Macro is intended to search through an excel file with a very specific format for keywords, 
+input through a text file, return the addresses of all cells that include the keywords, and the full
+ comments of those cells that don't include any of the keywords.***
+
+
+FORMAT REQUIREMENTS - These can only be amended if the program itself is edited
+		- Reviews must be in Column F; this should be true for all CliqView reports
+        - There must not be more than 30,000 reviews (the search function limits its range to 30,000 rows to save time)
+        - There must be only one sheet of reviews, with the name "Sheet1"
+        - The user must not be expecting more than 1,000 reviews in the "Others" column; this limit is for optimization
+        - NOTE: Don't worry about editing the Results sheet once the Macro has run; the Macro will clear the sheet once it runs again. But any permanent edits to the results must be done by changing the Macro itself.
+     
+INSTRUCTIONS
+		1. Preconditions:
+            - Edit the "List of Search Terms to Query" file to contain the keywords you want. I suggest using variations of the same keyword if you think some people may say something differently; for example, "News Feed" and "Newsfeed". 
+            - Save the "List of Search Terms to Query" file somewhere and remember where you saved it.
+            - If you would like, you can create a button for the Macro in the Ribbon (toolbar at the top of Excel). If the Macro is already imported into your Excel file, skip to step 8:
+				1. Click File in the top left-hand corner of Excel and select Options
+                2. Select Customize Ribbon
+                3. Ensure the Developer tab is enabled by checking the box next to its name
+                4. Select OK to close the Options panel
+                5. Click the Developer tab above the Ribbon and then click Macros
+                6. Edit or Create any Macro and paste the code from our Macro file in place of anything there (make sure you aren't editing anything you want to keep)
+                7. Save and close the window, returning to the Excel Workbook
+                8. Right-click the Ribbon and select Customize the Ribbon... (this will take you to where you left in step 4
+                9. On the left side of the Add/Remove options, select the drop-down Macros and click on the Macro you've just created/edited
+                10. On the right side of the Add/Remove options, select the plus sign beside the Developer tab name and navigate to where you want the button (could be inside of an existing tab or you could create your own)
+                11. Click the Add button in the middle of the two sides, then click OK to close the Options panel
+				12. You may now click on that button to quickly run the Macro at any time.
+		2. Once you run the Macro, it will ask you to open a file. Select the "List of Search Terms to Query.txt" file.
+		3. Do not disturb the Excel window while the Macro is running; it's not likely to crash, but it could be slowed down significantly by constant clicking or selections while the program is working.
+    
+RESULTS
+        - The first column contains reviews that match none of the keywords. Use this column to manually read through some reviews and find new keywords.
+        - The second row (apart from the first cell in the row) is reserved for the number of total 
+occurrences of the keywords in bold in the Excel sheet "Sheet1". 
+        - Cells matching a keyword will have their addresses populate the column under their keyword in bold. Further edits of this Macro could use these addresses to merge search queries by filtering one column's results against another column's results, essentially cross-referencing the data, but this Macro doesn't do that.
+        - A chart will appear after the search queries are completed. You will have to expand the chart to a visible size. The numbers on the lines of the chart correspond to the number of occurrences of those keywords. The type of chart, title, data labels, and other features can be edited from inside the Macro. 
